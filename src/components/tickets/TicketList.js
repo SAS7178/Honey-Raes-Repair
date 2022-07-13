@@ -14,7 +14,7 @@ export const TicketList = () => {
 
     useEffect(
         () => {
-            if(emergency) {
+            if (emergency) {
                 const emergencyTickets = tickets.filter(ticket => ticket.emergency === true)
                 setFiltered(emergencyTickets)
             } else {
@@ -31,7 +31,6 @@ export const TicketList = () => {
                 .then((ticketArray) => {
                     setTickets(ticketArray)
                 })
-
 
         },
         [] // When this array is empty, you are observing initial component state
@@ -51,9 +50,9 @@ export const TicketList = () => {
         [tickets]
     )
 
-        useEffect(
-            () => {
-                if(openOnly){
+    useEffect(
+        () => {
+            if (openOnly) {
                 const openTicketArray = tickets.filter(ticket => {
                     return ticket.userId === honeyUserObject.id && ticket.dateCompleted === ""
                 })
@@ -62,36 +61,35 @@ export const TicketList = () => {
                 const myTickets = tickets.filter(ticket => ticket.userId === honeyUserObject.id)
                 setFiltered(myTickets)
             }
-            },
-            [openOnly]
-        )
+        },
+        [openOnly]
+    )
 
     return <>
-    {
-        honeyUserObject.staff
-            ? <>    <button onClick={() => {setEmergency(true)}}>Emergency Only</button>
-            <button onClick={() => {setEmergency(false)}}>Show All</button>
-            </>
-            : <> 
-            <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
-            <button onClick={() => updateOpenOnly(true)}>Open Tickets</button>
-            <button onClick={() => updateOpenOnly(false)}>All My Tickets</button>
-            </>
-    }
-    <h2>List of Tickets</h2>
-
-    <article className="tickets">
         {
-            //keys={`ticket--${ticket.id}`}
-            filteredTickets.map(
-                (ticket) => {
-                    return <section className="ticket" key={`ticket--${ticket.id}`} >
-                        <header>{ticket.description}</header>
-                        <footer>Emergency: {ticket.emergency ? "yes" : "No"}</footer>
-                    </section>
-                }
-                )
+            honeyUserObject.staff
+                ? <>    <button onClick={() => { setEmergency(true) }}>Emergency Only</button>
+                    <button onClick={() => { setEmergency(false) }}>Show All</button>
+                </>
+                : <>
+                    <button onClick={() => navigate("/ticket/create")}>Create Ticket</button>
+                    <button onClick={() => updateOpenOnly(true)}>Open Tickets</button>
+                    <button onClick={() => updateOpenOnly(false)}>All My Tickets</button>
+                </>
         }
-    </article>
-</>
+        <h2>List of Tickets</h2>
+
+        <article className="tickets">
+            {
+                filteredTickets.map(
+                    (ticket) => {
+                        return <section className="ticket" key={`ticket--${ticket.id}`} >
+                            <header>{ticket.description}</header>
+                            <footer>Emergency: {ticket.emergency ? "yes" : "No"}</footer>
+                        </section>
+                    }
+                )
+            }
+        </article>
+    </>
 }

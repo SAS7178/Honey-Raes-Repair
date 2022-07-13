@@ -23,23 +23,23 @@ export const TicketForm = () => {
         console.log("You clicked the wrong button!")
         // TODO: Create the object to be saved to the API
         const ticketToSendToApi = {
-        userId: honeyUserObject.id,
-        description: ticket.description,
-        emergency: ticket.emergency,
-        dateCompleted: ""
+            userId: honeyUserObject.id,
+            description: ticket.description,
+            emergency: ticket.emergency,
+            dateCompleted: ""
         }
-        
+
         return fetch(`http://localhost:8088/serviceTickets`, {
             method: "POST",
             headers: {
-                    "Content-Type": "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify(ticketToSendToApi)
-    })
-        .then(response => response.json())
-        .then(() => {
-            navigate("/tickets")
         })
+            .then(response => response.json())
+            .then(() => {
+                navigate("/tickets")
+            })
     }
     // TODO: Perform the fetch() to POST the object to the API
     return (
@@ -56,8 +56,8 @@ export const TicketForm = () => {
                         value={ticket.description}
                         onChange={
                             (evt) => {
-                                const copy = {... ticket}
-                                copy.description =  evt.target.value
+                                const copy = { ...ticket }
+                                copy.description = evt.target.value
                                 update(copy)
                             }
                         } />
@@ -70,7 +70,7 @@ export const TicketForm = () => {
                         value={ticket.emergency}
                         onChange={
                             (evt) => {
-                                const copy = {...ticket}
+                                const copy = { ...ticket }
                                 copy.emergency = evt.target.checked
                                 update(copy)
                             }
@@ -78,8 +78,8 @@ export const TicketForm = () => {
                 </div>
             </fieldset>
             <button
-            onClick={(clickEvent)=> handleSaveButtonClick(clickEvent)}
-            className="btn btn-primary">
+                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                className="btn btn-primary">
                 Submit Ticket
             </button>
         </form>
