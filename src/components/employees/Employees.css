@@ -3,13 +3,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
 }
 
 .employee {
     background-color: hotpink;
-    border-color: 2px dotted fuchsia;
+    border: 2px dotted rgb(208, 0, 0);
     color: black;
     padding: 0.5rem;
-    margin: 1em;
+    margin: .5em;
 }
