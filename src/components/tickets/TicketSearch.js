@@ -2,7 +2,6 @@
 export const TicketSearch = ({setterFunction}) => {
      return (
         <div>
-            
             <input
             onChange={
                 (changeEvent) => {

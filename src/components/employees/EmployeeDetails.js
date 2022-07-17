@@ -1,8 +1,5 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-//import { Employee } from "./Employee"
-//import "./Employee.css"
-//import { Link } from "react-router-dom"
 
 export const EmployeeDetails = () => {
     const {employeeId} = useParams()
