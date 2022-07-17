@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import "./Employees.css"
+import { Employee } from "./Employee";
+
 
 export const EmployeeList = () => {
     const [employees, setEmployees] = useState([])
@@ -11,18 +12,16 @@ export const EmployeeList = () => {
             .then((employeeArray) => {
                 setEmployees(employeeArray)
             })
-
         },
         []
     )
+    
     return <article className="employees">
         {
-            employees.map(employee => {
-                return <section className="employee" key={`employee--${employee.id}`}>
-                    <div>Name:{employee.fullName}</div>
-                    <div>Email:{employee.email}</div>
-                </section>
-            })
+            employees.map(employee => <Employee key={`employee--${employee.id}`}
+                id={employee.id} 
+                fullName={employee.fullName} 
+                email={employee.email} />)
         }
     </article>
 }

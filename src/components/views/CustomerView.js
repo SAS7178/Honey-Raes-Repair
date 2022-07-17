@@ -15,7 +15,7 @@ export const CustomerViews = () => {
                     <Outlet />
                 </>
             }>
-
+             
                 <Route path="tickets" element={<TicketList />} />
                 <Route path="ticket/create" element={<TicketForm />} />
             </Route>
