@@ -1,0 +1,26 @@
+.customer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.customer {
+    background-color: hotpink;
+    border: 1px dotted rgb(208, 0, 0);
+    color: black ;
+    padding: 0.5rem;
+    margin: .5em;
+}
+.customer__footer {
+    margin: 1rem 0 0.25rem 0;
+    font-style: oblique;
+}
+
+.customer__header {
+    font-size:  large;
+    font-weight: 700;
+    line-height: 3rem;
+}
