@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./Tickets.css"
 
-export const TicketList = ({searchTermState}) => {
+export const TicketList = ({ searchTermState }) => {
     const [tickets, setTickets] = useState([])
     const [filteredTickets, setFiltered] = useState([])
     const [emergency, setEmergency] = useState(false)
@@ -32,7 +32,7 @@ export const TicketList = ({searchTermState}) => {
         },
         [] // When this array is empty, you are observing initial component state
     )
-    
+
     useEffect(
         () => {
             if (emergency) {
@@ -93,8 +93,11 @@ export const TicketList = ({searchTermState}) => {
                 filteredTickets.map(
                     (ticket) => {
                         return <section className="ticket" key={`ticket--${ticket.id}`} >
-                            <header>{ticket.description}</header>
-                            <footer>Emergency: {ticket.emergency ? "yes" : "No"}</footer>
+                            <header>
+                                <Link to={`/tickets/${ticket.id}/edit`}>Ticket {ticket.id}</Link>
+                            </header>
+                            <section>{ticket.description}</section>
+                            <footer>Emergency: {ticket.emergency ? "🧨" : "No"}</footer>
                         </section>
                     }
                 )
